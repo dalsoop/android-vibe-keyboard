@@ -1,0 +1,8 @@
+[package]
+name = "hangul-core"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "hangul_core"
+crate-type = ["staticlib", "rlib"]

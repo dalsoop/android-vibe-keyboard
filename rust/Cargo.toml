@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "hangul-core",
+]
+resolver = "2"
