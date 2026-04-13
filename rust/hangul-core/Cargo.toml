@@ -6,3 +6,6 @@ edition = "2021"
 [lib]
 name = "hangul_core"
 crate-type = ["staticlib", "rlib"]
+
+[build-dependencies]
+hardcoded-lint = { git = "https://github.com/dalsoop/hardcoded-lint" }

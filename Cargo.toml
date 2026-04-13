@@ -1,1 +1,7 @@
-rust/Cargo.toml
+[workspace]
+members = [
+    "hangul-core",
+    "hangul-jni",
+]
+resolver = "2"
+
