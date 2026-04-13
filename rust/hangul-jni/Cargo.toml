@@ -1,0 +1,12 @@
+[package]
+name = "hangul-jni"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "hangul_jni"
+crate-type = ["cdylib"]
+
+[dependencies]
+hangul-core = { path = "../hangul-core" }
+jni = { version = "0.21", default-features = false }

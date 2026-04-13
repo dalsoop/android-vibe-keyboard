@@ -1,0 +1,47 @@
+plugins {
+    id 'com.android.application'
+    id 'org.mozilla.rust-android-gradle'
+}
+
+android {
+    namespace 'org.example.androidvibehangul'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'org.example.androidvibehangul'
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    sourceSets {
+        main {
+            // Include the JNI .so built by cargo
+            jniLibs.srcDirs = ['src/main/jniLibs']
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+cargo {
+    module  = "../rust"          // path to Rust workspace Cargo.toml
+    libname = "hangul_jni"       // matches lib.name in hangul-jni/Cargo.toml
+    targets = ["arm", "arm64", "x86", "x86_64"]
+    profile = "release"
+}
+
+// Ensure Rust is built before Java compilation
+tasks.whenTaskAdded { task ->
+    if (task.name == 'mergeDebugJniLibFolders' || task.name == 'mergeReleaseJniLibFolders') {
+        task.dependsOn 'cargoBuild'
+    }
+}
+
+dependencies {
+    // No external deps — all logic is in Rust via JNI
+}
