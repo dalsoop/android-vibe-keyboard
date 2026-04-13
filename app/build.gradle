@@ -17,8 +17,7 @@ android {
 
     sourceSets {
         main {
-            // Include the JNI .so built by cargo
-            jniLibs.srcDirs = ['src/main/jniLibs']
+            jniLibs.srcDirs += ["${buildDir}/rustJniLibs/android"]
         }
     }
 
@@ -33,6 +32,7 @@ cargo {
     libname = "hangul_jni"       // matches lib.name in hangul-jni/Cargo.toml
     targets = ["arm", "arm64", "x86", "x86_64"]
     profile = "release"
+    targetDirectory = "../rust/target"
 }
 
 // Ensure Rust is built before Java compilation

@@ -1,0 +1,19 @@
+# Gradle
+.gradle/
+build/
+local.properties
+
+# Rust
+rust/target/
+rust/Cargo.lock
+
+# Android
+*.apk
+*.aab
+*.iml
+.idea/
+app/src/main/jniLibs/
+
+# OS
+.DS_Store
+*.swp
